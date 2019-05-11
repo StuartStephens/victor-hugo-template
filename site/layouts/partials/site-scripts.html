@@ -1,0 +1,6 @@
+<!-- scripts -->
+{{ $scripts := .Site.Data.webpack.main.js }}
+{{ with $scripts }}    
+  <script type="text/javascript" src="{{ . | relURL }}"></script>
+  {{ $.Scratch.Set "scripts" . }}    
+{{end}} 

@@ -2,5 +2,6 @@
 
 import "./css/main.css";
 
-// Say hello
-console.log("🦊 Hello! Edit me in src/index.js");
+// Remove .no-js from html element
+document.documentElement.className = document.documentElement.className.replace("no-js","js");
+import "./js/nav.js";

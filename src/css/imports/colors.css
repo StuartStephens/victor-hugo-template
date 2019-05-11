@@ -1,0 +1,103 @@
+  --main-dark: var(--dark-gray);
+  --alt-dark: var(--mid-gray);
+  --main-light: var(--white);
+  --alt-light: var(--light-silver);
+  --primary: var(--orange);
+  --alt: var(--navy);
+}
+
+.main-dark{
+  color: var(--main-dark);
+}
+
+.alt-dark{
+  color: var(--alt-dark);
+}
+
+.main-light{
+  color: var(--main-light);
+}
+
+.alt-light{
+  color: var(--alt-light);
+}
+
+.bg-main-dark{
+  background-color: var(--main-dark);
+}
+
+.bg-alt-dark{
+  background-color: var(--alt-dark);
+}
+
+.bg-main-light{
+  background-color: var(--main-light);
+}
+
+.bg-alt-light{
+  background-color: var(--alt-light);
+}
+
+.b--main-dark{
+  border-color: var(--main-dark);
+}
+
+.b--alt-dark{
+  border-color: var(--alt-dark);
+}
+
+.b--main-light{
+  border-color: var(--main-light);
+}
+
+.b--alt-light{
+  border-color: var(--alt-light);
+}
+
+.hover-main-dark{
+  &:hover{
+    color: var(--main-dark);
+  }
+}
+
+.hover-alt-dark{
+  &:hover{
+    color: var(--alt-dark);
+  }
+}
+
+.hover-main-light{
+  &:hover{
+    color: var(--main-light);
+  }
+}
+
+.hover-alt-light{
+  &:hover{
+    color: var(--alt-light);
+  }
+}
+
+.hover-bg-main-dark{
+  &:hover{
+    background-color: var(--main-dark);
+  }
+}
+
+.hover-bg-alt-dark{
+  &:hover{
+    background-color: var(--alt-dark);
+  }
+}
+
+.hover-bg-main-light{
+  &:hover{
+    background-color: var(--main-light);
+  }
+}
+
+.hover-bg-alt-light{
+  &:hover{
+    background-color: var(--alt-light);
+  }
+}

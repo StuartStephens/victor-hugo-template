@@ -1,0 +1,55 @@
+<header class="o-nav o-nav--header o-container flex flex-row items-center sans-serif">
+  <!-- Logo -->
+  <div class="o-nav__logo mr5">
+    <a href="/">
+      <img src="/android-chrome-512x512.png" alt="" class="db">
+    </a>
+  </div>
+
+  <!-- Main Menu -->
+  <nav class="dn db-ns">
+    {{ $currentNode := . }}
+    <ul class="o-nav__menu flex flex-row justify-start items-center list" id="main-menu">
+      {{ range .Site.Menus.main }}
+        <li>
+          <a class="link pv3 dib{{if or ($currentNode.IsMenuCurrent "main" .) ($currentNode.HasMenuCurrent "main" .) }} primary{{else}} hover-primary-light{{end}}" href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+      {{ end }}
+    </ul>
+  </nav>
+
+  <!-- Navbar toggle menu button -->
+  <button class="o-nav__toggle bn dn-ns pointer">
+    <span></span>
+  </button>
+</header>
+
+
+<!-- Mobile Menu -->
+<div class="o-nav o-nav--mobile o-container sans-serif">
+  <!-- Wrap mobile header items together for proper alignment -->
+  <div class="o-nav--mobile__header">
+    <!-- Mobile Menu Logo -->
+    <div class="o-nav__logo">
+      <a href="/">
+        <img src="/android-chrome-512x512.png" alt="" class="db">
+      </a>
+    </div>
+    <!-- Mobile Menu toggle button -->
+    <button class="o-nav__toggle-close bn dn-ns pointer">
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Nav -->
+  <nav class="o-nav__menu">
+    {{ $currentNode := . }}
+    <ul class="flex flex-column justify-start items-end list" id="main-menu">
+      {{ range .Site.Menus.main }}
+        <li>
+          <a class="link f3 pv3 dib{{if or ($currentNode.IsMenuCurrent "main" .) ($currentNode.HasMenuCurrent "main" .) }} primary{{else}} hover-primary-light{{end}}" href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+      {{ end }}
+    </ul>
+  </nav>
+</div>

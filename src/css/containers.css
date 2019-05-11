@@ -1,0 +1,23 @@
+.o-container{
+	padding-left: 3%;
+	padding-right: 3%;
+	@media(--breakpoint-large){
+		padding-left: 7.5%;
+		padding-right: 7.5%;
+	}
+}
+.o-container--inner{
+	margin-left: auto;
+	margin-right: auto;
+	@media (--breakpoint-medium){
+    width: 85%;
+  }
+  @media (--breakpoint-large){
+    width: 73.75%;
+  }
+}
+
+.o-spacer{
+	padding-top: ms(4)rem;
+	padding-bottom: ms(4)rem;
+}

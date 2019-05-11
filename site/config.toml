@@ -1,9 +1,63 @@
-baseurl = "/"
+# https://github.com/gohugoio/hugo/blob/master/docs/config/_default/config.toml
+baseURL = "https://url.com"
+defaultContentLanguage = "en"
+enableEmoji = true
 languageCode = "en-us"
 languageLang = "en"
-title = "My new Victor-Hugo site"
+metaDataFormat = "yaml"
+title = ""
+googleAnalytics = ""
+# pluralizeListTitles = false
+# disableAliases = true
 
-# RSS, categories and tags disabled for an easy start
-# See configuration options for more details: 
 # https://gohugo.io/getting-started/configuration/#toml-configuration
-disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
+disableKinds = ["RSS"]
+
+enableRobotsTXT = true
+buildDrafts = true
+
+[blackfriday]
+plainIDAnchors = true
+# See https://github.com/gohugoio/hugo/issues/2424
+hrefTargetBlank = true
+extensions = ["hardLineBreak"]
+
+[taxonomies]
+category = "categories"
+
+[Params]
+description = "!!!"
+image = "!!!"
+[[Params.publisher]]
+name = ""
+logo = ""
+
+[social]
+twitter = "!!!"
+facebook = "!!!"
+[Author]
+name = "!!!"
+twitter = "!!!"
+facebook = "!!!"
+
+# Modular Site menu
+SectionPagesMenu = "main"
+[menu]
+    [[menu.main]]
+    identifier = "contact"
+    name       = "Contact"
+    url        = "/contact/"
+    weight     = 1
+# footer
+    [[menu.footer]]
+    identifier = "contact"
+    name       = "Contact"
+    url        = "/item/"
+    weight     = 1
+
+# For related articles / service essays
+[related]
+includeNewer = true
+[[related.indices]]
+name = "topics"
+weight = "1"

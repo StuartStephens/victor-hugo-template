@@ -1,30 +1,80 @@
-<!doctype html>
-<html lang="{{ $.Site.Language.Lang }}">
+<!DOCTYPE html>
+<!-- No-js added by default -->
+<html class="no-js" lang="{{ with $.Site.LanguageCode }}{{ . }}{{ else }}en-us{{ end }}">
+  <head>
+    <meta charset="utf-8">
+    <!-- Fonts (for now) -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700|PT+Sans:400,400i,700,700i|PT+Serif+Caption:400,400i|PT+Serif:400,400i,700,700i" rel="stylesheet">  -->
+    <!-- Preload fonts -->
+    {{/* https://www.zachleat.com/web/preload/ */}}
+    <!-- <link rel="preload" href="{{/* "files/muli-latin-200.woff2" | absURL */}}" as="font" type="font/woff2" crossorigin> -->
+    <!-- <link rel="preload" href="{{/* "files/muli-latin-400.woff2" | absURL */}}" as="font" type="font/woff2" crossorigin> -->
+    <!-- <link rel="preload" href="{{/* "files/muli-latin-800.woff2" | absURL */}}" as="font" type="font/woff2" crossorigin> -->
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <base href="{{ if getenv "CONTEXT" }}{{ cond (eq "production" (getenv "CONTEXT")) (getenv "URL") (getenv "DEPLOY_PRIME_URL") }}{{ else }}{{ $.Site.BaseURL }}{{ end }}">
-  <title>{{ $.Site.Title }}</title>
+    <!-- Microsoft browser support -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
 
-  {{ $stylesheet := .Site.Data.webpack.main }}
-  {{ with $stylesheet.css }}
-    <link href="{{ relURL . }}" rel="stylesheet">
-  {{ end }}
-</head>
+    <!-- "Page title | Site title" OR "Site Title" -->
+    <title>{{ block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
+    
+    <!-- Reponsive Viewport tags -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-<body>
+    <!-- Hugo Generator Shoutout -->
+    {{ .Hugo.Generator }}
 
-  {{ block "header" . }}{{ partial "header" . }}{{end}}
+    <!-- ??? -->
+    {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
+      <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+    {{ else }}
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    {{ end }}
 
-  {{ block "main" . }}{{end}}
+    <!-- ??? -->
+    {{ range .AlternativeOutputFormats -}}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+    {{ end -}}
 
-  {{ block "footer" . }}{{ partial "footer" . }}{{end}}
+    <!-- Stylesheets -->
+    {{ $stylesheet := .Site.Data.webpack.main.css }}
+    {{ with $stylesheet }}
+      <link rel="stylesheet" href="{{ . | relURL }}" crossorigin="anonymous"> 
+      <!-- ??? -->
+      {{ $.Scratch.Set "stylesheet" . }}    
+    {{end}}
 
-  {{ $script := .Site.Data.webpack.main }}
-  {{ with $script.js }}
-    <script src="{{ relURL . }}"></script>
-  {{ end }}
-</body>
+    <!-- Scripts -->
+    {{ block "scripts" . }}
+      {{- partial "site-scripts.html" . -}}
+    {{ end }}
+  
+    <!-- Metadata -->
+    {{ partial "site-manifest.html" . }}
+    {{- partial "site-opengraph.html" . -}}
+    {{- template "_internal/google_news.html" . -}}
+    {{- partial "site-schema.html" . -}}
+    {{- partial "site-twitter_cards.html" . -}}
+        
+    <!-- Google Analytics -->
+    {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
+      {{- template "_internal/google_analytics_async.html" . -}}
+    {{ end }}
 
+  </head>
+  <body class="ma0 sans-serif f6 bg-primary-color-light{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
+    <!-- Navigation -->
+    {{ block "nav" . }}{{ partial "site-nav.html" . }}{{ end }}
+    <!-- Header -->
+    {{ block "header" . }}{{ end }}
+    <main role="main" class="min-vh-100">
+      <!-- Main content -->
+      {{ block "main" . }}{{ end }}
+    </main>
+    <!-- Footer (Cached) -->
+    {{ block "footer" . }}{{ partialCached "site-footer.html" . }}{{ end }}
+    
+
+  </body>
 </html>

@@ -15,6 +15,7 @@ module.exports = merge(common, {
 
   devServer: {
     port: process.env.PORT || 3000,
+    host: '192.168.1.215',
     contentBase: path.join(process.cwd(), "./dist"),
     watchContentBase: true,
     stats: "none",

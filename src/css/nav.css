@@ -1,0 +1,147 @@
+:root{
+  --logo-width: 34px;
+  --logo-height: 34px;
+  --toggle-size: 20px;
+}
+.o-nav{
+  padding-top: ms(0)rem;
+  padding-bottom: ms(0)rem;
+  & .o-nav__logo{
+    width: var(--logo-width);
+    height: var(--logo-height);
+    display: inline-block;
+  }
+  /*Both toggle buttons*/
+  & .o-nav__toggle, & .o-nav__toggle-close{
+    background: none;
+    padding: 0;
+    border: none;
+    margin-left: auto;
+    width: var(--toggle-size);
+    cursor: pointer;
+    position: relative;
+    opacity: .7;
+    transition: .25s;
+    &::after{
+      content: "";
+      position: absolute;
+      left: -10px;
+      top: -10px;
+      bottom: -10px;
+      right: -10px;
+    }
+    & span{
+      width: 100%;
+      position: absolute;
+      &::after, &::before{
+        content: "";
+        width: 100%;
+        position: absolute;
+        left: 0;
+        height: 2px;
+        border-radius: 1px;
+        transition: .25s;
+      }
+    }
+  }
+  /*Toggle open button*/
+  & .o-nav__toggle{
+    height: 14px;
+    & span{
+      background: #000;
+      height: 2px;
+      top: 50%;
+      left: 0;
+      margin-top: -1px;
+      border-radius: 1px;
+      &::after{
+        bottom: -6px;
+        background: #000;
+      }
+      &::before{
+        top: -6px;
+        background: #000;
+      }
+    }
+  }
+  /*Toggle-close button*/
+  & .o-nav__toggle-close{
+    height: var(--toggle-size);
+    & span{
+      position: static;
+      &::after{
+        background: #fff;
+        transform: rotate(135deg);
+      }
+      &::before{
+        background: #fff;
+        transform: rotate(45deg);
+      }
+    }
+  }
+  /*Header version of nav*/
+  &.o-nav--header{
+    & li{
+      margin-right: ms(4)rem;
+      &:last-child{
+        margin-right:0;
+      }
+    }
+  }
+  /*Mobile version of nav*/
+  &.o-nav--mobile{
+    display: none;
+    position: fixed;
+    background: #000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    height: 100%;
+    /*Mobile nav header items*/
+    & .o-nav--mobile__header{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    /*Mobile Nav Menu*/
+    & .o-nav__menu{
+      position: relative;
+      & ul{
+        position: absolute;
+        top: 0;
+        right: 0;
+        & li{
+          & a{
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+  /* Hiding Navbar on scroll*/
+/*  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  transform: translateY(0);
+  transition: transform 200ms ease-out;
+  z-index: 999;
+  background-color: var(--white);
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.07);
+  &.is-scrolled{
+    transform: translateY(-100%);
+    transition-delay: 200ms;
+  }
+  &.is-revealed{
+    transform: translateY(0);
+    transition-delay: 200ms;
+  }*/
+}
+/*Adding spacing to the top of every page, equal to padding + logo height*/
+/*body{
+  padding-top: calc(2rem + var(--logo-height));
+  @media(--breakpoint-not-small){
+    padding-top: calc(4rem + var(--logo-height));
+  }
+}*/

@@ -62,5 +62,8 @@
   },
   "resolutions": {
     "natives": "1.1.6"
+  },
+  "dependencies": {
+    "postcss-modular-scale": "^2.5.2"
   }
 }
