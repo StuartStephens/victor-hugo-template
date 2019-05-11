@@ -48,7 +48,7 @@
 @import './imports/_display';
 @import './imports/_flexbox';
 @import './imports/_floats';
-@import './imports/_font-family';
+@import './imports/font-family';
 @import './imports/_font-style';
 @import './imports/_font-weight';
 @import './imports/_forms';
