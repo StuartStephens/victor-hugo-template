@@ -81,6 +81,14 @@
   --alt-light: var(--light-silver);
   --primary: var(--orange);
   --alt: var(--navy);
+
+
+  --twitter: #1da1f2;
+  --facebook: #3b5998;
+  --linkedin: #0077b5;
+  --pinterest: #bd081c;
+  --medium: #00ab6c;
+  --rss: #f26522;
 }
 
 .main-dark{
@@ -177,4 +185,47 @@
   &:hover{
     background-color: var(--alt-light);
   }
+}
+
+
+/* Social Media Colors */
+
+.medium{
+  color: var(--medium);
+}
+
+.bg-medium{
+  background-color: var(--medium);
+}
+
+.linkedin{
+  color: var(--linkedin);
+}
+
+.bg-linkedin{
+  background-color: var(--linkedin);
+}
+
+.twitter{
+  color: var(--twitter);
+}
+
+.bg-twitter{
+  background-color: var(--twitter);
+}
+
+.facebook{
+  color: var(--facebook);
+}
+
+.bg-facebook{
+  background-color: var(--facebook);
+}
+
+.pinterest{
+  color: var(--pinterest);
+}
+
+.bg-pinterest{
+  background-color: var(--pinterest);
 }
